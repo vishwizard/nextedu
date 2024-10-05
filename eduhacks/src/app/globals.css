@@ -2,26 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* src/styles/globals.css */
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #121212; /* Dark background */
+  color: #e0e0e0; /* Light text color */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  font-family: Arial, sans-serif; /* Change the font if you want */
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+a {
+  color: #bb86fc; /* Light purple color for links */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff; /* White color for headings */
+}
+
+/* Additional styling for your components */
+button {
+  background-color: #3700b3; /* Dark purple for buttons */
+  color: #ffffff; /* White text */
+  border: none; /* No border */
+  padding: 10px 20px; /* Some padding */
+  cursor: pointer; /* Pointer cursor on hover */
+  border-radius: 5px; /* Rounded corners */
+}
+
+button:hover {
+  background-color: #6200ee; /* Lighter purple on hover */
 }
