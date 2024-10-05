@@ -6,7 +6,7 @@ const handler = NextAuth({
   providers: [
     GoogleProvider({
       clientId: process.env.CLIENT_ID, 
-      clientSecret: process.env.CLIENT_SECRET, 
+      clientSecret: process.env.CLIENT_SECRET,
     }),
     CredentialsProvider({
       name: "Credentials",
@@ -30,8 +30,8 @@ const handler = NextAuth({
   ],
   secret: process.env.NEXTAUTH_SECRET, 
   session: {
-    strategy: "jwt", // Use "jwt" for JSON Web Tokens
-    maxAge: 30 * 24 * 60 * 60, // 30 days in seconds
+    strategy: "jwt", 
+    maxAge: 30 * 24 * 60 * 60, 
   },
 });
 
