@@ -2,6 +2,8 @@ import MainLayout from '@/components/MainLayout'
 import { PlaceholdersAndVanishInput } from '@/components/ui/placeholders-and-vanish-input'
 import React from 'react'
 
+
+
 export default function page() {
   return (
     <MainLayout>

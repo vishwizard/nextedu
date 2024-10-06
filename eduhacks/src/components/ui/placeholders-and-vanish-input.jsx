@@ -13,6 +13,30 @@ export function PlaceholdersAndVanishInput({
 
   const intervalRef = useRef(null);
 
+  const prompt = "Write quote of the day";
+  const [output,setOutput]=useState("This is a Next.js Project");
+
+  const generateText = async () =>{
+    try{
+      const response = await fetch('/api/generate',{
+        method:'POST',
+        headers:{
+          'Content-type':'application/json'
+        },
+        body:JSON.stringify({body:prompt})
+        
+      });
+
+      const data = await response.json();
+      if(response.ok){
+        setOutput(data.output);
+      }else{
+        setOutput(data.error);
+      }
+    } catch(error){
+      console.log(error);
+    }
+  }
   const startAnimation = () => {
     if (placeholders.length > 0) {
       intervalRef.current = setInterval(() => {
@@ -169,6 +193,7 @@ export function PlaceholdersAndVanishInput({
   const handleSubmit = (e) => {
     e.preventDefault();
     vanishAndSubmit();
+    generateText();
     onSubmit && onSubmit(e);
   };
 

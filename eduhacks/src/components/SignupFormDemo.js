@@ -3,13 +3,47 @@ import React from "react";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { cn } from "@/lib/utils";
-import {
-  IconBrandGithub,
-  IconBrandGoogle,
-  IconBrandOnlyfans,
-} from "@tabler/icons-react";
+import { useState } from "react";
+
 
 export function SignupFormDemo() {
+
+  const countries = [
+    {
+      code: "+91",
+      name: "IND",
+      flag: "https://flagcdn.com/w20/in.png",
+    },
+    {
+      code: "+1",
+      name: "US",
+      flag: "https://flagcdn.com/w20/us.png",
+    },
+    {
+      code: "+44",
+      name: "UK",
+      flag: "https://flagcdn.com/w20/gb.png",
+    },
+    {
+      code: "+61",
+      name: "AUS",
+      flag: "https://flagcdn.com/w20/au.png",
+    },
+    {
+      code: "+81",
+      name: "JP",
+      flag: "https://flagcdn.com/w20/jp.png",
+    },
+    // Add more countries as needed
+  ];
+
+  const [selectedCountry, setSelectedCountry] = useState(countries[0]);
+
+  const handleChange = (event) => {
+    const country = countries.find((c) => c.code === event.target.value);
+    setSelectedCountry(country);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted");
@@ -46,6 +80,39 @@ export function SignupFormDemo() {
         <LabelInputContainer className="mb-4">
           <Label htmlFor="course">Age</Label>
           <Input id="age" placeholder="20 Years old" type="number" />
+        </LabelInputContainer>
+        <LabelInputContainer className="mb-4">
+          <Label htmlFor="course">Phone Number</Label>
+          <div className="flex gap-4">
+          <div className="flex w-32 text-sm text-gray-700 relative">
+          <div className="">
+        <img className="block w-8 items-center justify-center  absolute top-3 left-28"
+          src={selectedCountry.flag}
+          alt={selectedCountry.name}
+        />
+      </div>
+      <select
+        value={selectedCountry.code}
+        onChange={handleChange}
+        style={{
+          padding: "4px",
+          border: "1px solid #ccc",
+          borderRadius: "4px",
+          width: "100%",
+          maxWidth: "100px",
+        }}
+      >
+        {countries.map((country) => (
+          <option key={country.code} value={country.code}>
+            {`${country.name} (${country.code})`}
+          </option>
+        ))}
+      </select>
+
+      </div>
+          <Input id="phone" placeholder="+91 9411164084" type="tel" />
+          </div>
+          
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="password">Password</Label>
